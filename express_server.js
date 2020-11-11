@@ -8,13 +8,8 @@ app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
-//라우터 추가해보기
-app.get("/hello", function (req, res) {
-    res.send("Hello 2");
-});
-
-app.get("/user", function (req, res) {
-    res.send("user Data");
+app.get("/ejsTest", function (req, res) {
+    res.render("test");
 });
 
 app.listen(3000);
