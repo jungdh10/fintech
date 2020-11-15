@@ -12,4 +12,10 @@ app.get("/ejsTest", function (req, res) {
     res.render("test");
 });
 
+app.get("/getDataTest", function (req, res) {
+  var userText = req.body.userTest;
+  consol.log(userText);
+});
+
+
 app.listen(3000);
