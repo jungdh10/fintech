@@ -11,7 +11,8 @@
             url:'/getDataTest',
             type : 'POST',
             data : {
-              userText : inputText
+              userText : inputText,
+              sendTime : new Date()
             },
             success:function(data){
               alert(data);

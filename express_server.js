@@ -17,6 +17,7 @@ app.get("/ejsTest", function (req, res) {
 
 app.post("/getDataTest", function (req, res) {
   var userText = req.body.userText;
+  console.log(req.body);
   console.log(userText);
   res.json("입력값은 : " + userText);
 });
