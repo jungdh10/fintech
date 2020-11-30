@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 
 app.set("views", __dirname + "/views"); //ejs 를 사용하기위한 디렉토리 설정
 app.set("view engine", "ejs"); //ejs 를 사용하기위한 뷰 엔진 설정
@@ -12,6 +13,10 @@ app.use(express.static(path.join(__dirname, "public")));
  
 app.get("/", function (req, res) {
   res.send("Hello World");
+});
+
+app.get("/designTest", function (req, res) {
+  res.render("designTest");
 });
 
 app.get("/ejsTest", function (req, res) {
