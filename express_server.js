@@ -19,7 +19,9 @@ app.get("/signup", function (req, res) {
   res.render("signup");
 });
 
-
-
+app.get("/authResult", function (req, res) {
+  var authCode = req.query.code;
+  console.log(authCode);
+});
 
 app.listen(3000);
