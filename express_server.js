@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const request = require("request");
 
 app.set("views", __dirname + "/views"); //ejs 를 사용하기위한 디렉토리 설정
 app.set("view engine", "ejs"); //ejs 를 사용하기위한 뷰 엔진 설정
@@ -22,6 +23,7 @@ app.get("/signup", function (req, res) {
 app.get("/authResult", function (req, res) {
   var authCode = req.query.code;
   console.log(authCode);
+  request("", function (error, response, body) {});
 });
 
 app.listen(3000);
