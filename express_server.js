@@ -42,7 +42,9 @@ app.get("/authResult", function (req, res) {
   };
 
   request(option, function (error, response, body) {
-    console.log(body);
+    var accessRequestResult = JSON.parse(body); //JSON 오브젝트를 JS 오브젝트로 변경
+    console.log(accessRequestResult);
+    res.render("resultChild", { data: accessRequestResult });
   });
 });
 
