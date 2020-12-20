@@ -3,6 +3,16 @@ const app = express();
 const path = require("path");
 const request = require("request");
 
+//MYSQL 커넥터 추가
+var mysql = require("mysql");
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "********", //본인 비밀번호
+  database: "fintech",
+});
+connection.connect();
+
 app.set("views", __dirname + "/views"); //ejs 를 사용하기위한 디렉토리 설정
 app.set("view engine", "ejs"); //ejs 를 사용하기위한 뷰 엔진 설정
 
@@ -56,6 +66,10 @@ app.post("/signup", function (req, res) {
   var userRefreshToken = req.body.userRefreshToken;
   var userSeqNo = req.body.userSeqNo;
   console.log(userName, userEmail, userPassword);
+  connection.query("", function (error, results, fields) {
+    if (error) throw error;
+    console.log(results);
+  });
 });
 
 
