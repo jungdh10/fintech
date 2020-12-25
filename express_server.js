@@ -89,4 +89,10 @@ app.post("/signup", function (req, res) {
   );
 });
 
+app.post("/login", function (req, res) {
+  var userEmail = req.body.userEmail;
+  var userPassword = req.body.userPassword;
+  console.log(userEmail, userPassword);
+});
+
 app.listen(3000);
