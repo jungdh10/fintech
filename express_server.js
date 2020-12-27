@@ -93,6 +93,25 @@ app.post("/login", function (req, res) {
   var userEmail = req.body.userEmail;
   var userPassword = req.body.userPassword;
   console.log(userEmail, userPassword);
+  connection.query("SELECT * FROM user WHERE email = ?", [userEmail], function (
+    error,
+    results,
+    fields
+  ) {
+    if (error) throw error;
+    else {
+      if (results.length == 0) {
+        res.json(2); // 아이디 존재하지 않음
+      } else {
+        var storedPassword = results[0].password;
+        if (storedPassword == userPassword) {
+          res.json("로그인 성공");
+        } else {
+          res.json("로그인 실패");
+        }
+      }
+    }
+  });
 });
 
 app.listen(3000);
