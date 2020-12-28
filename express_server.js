@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const request = require("request");
+var jwt = require("jsonwebtoken");
 
 //MYSQL 커넥터 추가
 var mysql = require("mysql");
@@ -105,7 +106,8 @@ app.post("/login", function (req, res) {
       } else {
         var storedPassword = results[0].password;
         if (storedPassword == userPassword) {
-          res.json("로그인 성공");
+          var token = jwt.sign({ foo: "bar" }, "shhhhh");
+          res.json(token);
         } else {
           res.json("로그인 실패");
         }
