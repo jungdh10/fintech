@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const request = require("request");
 var jwt = require("jsonwebtoken");
+var tokenKey = "k!2f#$%%^1223^jlfejlkjfdaskejlkjflkj";
 
 //MYSQL 커넥터 추가
 var mysql = require("mysql");
@@ -106,8 +107,22 @@ app.post("/login", function (req, res) {
       } else {
         var storedPassword = results[0].password;
         if (storedPassword == userPassword) {
-          var token = jwt.sign({ foo: "bar" }, "shhhhh");
-          res.json(token);
+          jwt.sign(
+            {
+              userId: results[0].id,
+              userEmail: results[0].email,
+            },
+            tokenKey,
+            {
+              expiresIn: "10d",
+              issuer: "fintech.admin",
+              subject: "user.login.info",
+            },
+            function (err, token) {
+              console.log("로그인 성공", token);
+              res.json(token);
+            }
+          );
         } else {
           res.json("로그인 실패");
         }
