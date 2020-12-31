@@ -4,6 +4,7 @@ const path = require("path");
 const request = require("request");
 var jwt = require("jsonwebtoken");
 var tokenKey = "k!2f#$%%^1223^jlfejlkjfdaskejlkjflkj";
+var auth = require("./lib/auth");
 
 //MYSQL 커넥터 추가
 var mysql = require("mysql");
