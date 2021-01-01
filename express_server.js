@@ -37,6 +37,10 @@ app.get("/login", function (req, res) {
   res.render("login");
 });
 
+app.get("/authText", auth, function (req, res) {
+  res.json("당신은 콘텐츠 접근에 성공했습니다.");
+});
+
 app.get("/authResult", function (req, res) {
   var authCode = req.query.code;
   console.log(authCode);
