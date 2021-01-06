@@ -140,4 +140,9 @@ app.post("/login", function (req, res) {
   });
 });
 
+app.post("/list", auth, function (req, res) {
+  //https://testapi.openbanking.or.kr/v2.0/user/me url 에 Request 요청하기
+  request(option, function (err, response, body) {});
+});
+
 app.listen(3000);
