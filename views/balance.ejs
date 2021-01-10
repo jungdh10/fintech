@@ -265,8 +265,10 @@
         }
         return b;
       }
+
       var qs = getQueryStringObject();
-      var jwtToken = sessionStorage.getItem("jwtToken");
+
+      var jwtToken = sessionStorage.getItem("ourToken");
       console.log(qs, jwtToken);
       $.ajax({
         url: "http://localhost:3000/balance",
@@ -277,30 +279,31 @@
         data: {
           fin_use_num: qs.fin_use_num,
         },
+        //req.body.fin_use_num 추가해서 보내기
         success: function (data) {
           console.log("해당 계좌의 잔액은 :", data.balance_amt);
           $("#balanceAmount").text(data.balance_amt);
         },
       });
-      $.ajax({
-        url: "http://localhost:3000/transactionlist",
-        type: "POST",
-        headers: {
-          ourtoken: jwtToken,
-        },
-        data: {
-          fin_use_num: qs.fin_use_num,
-        },
-        success: function (data) {
-          console.log(data);
-          for (var i = 0; i < data.res_list.length; i++) {
-            var element = data.res_list[i];
-            $("#transactionList").append(
-              element.print_content + " | " + element.tran_amt + "<br>"
-            );
-          }
-        },
-      });
+      //   $.ajax({
+      //     url: "http://localhost:3000/transactionlist",
+      //     type: "POST",
+      //     headers: {
+      //       ourtoken: jwtToken,
+      //     },
+      //     data: {
+      //       fin_use_num: qs.fin_use_num,
+      //     },
+      //     success: function (data) {
+      //       console.log(data);
+      //       for (var i = 0; i < data.res_list.length; i++) {
+      //         var element = data.res_list[i];
+      //         $("#transactionList").append(
+      //           element.print_content + " | " + element.tran_amt + "<br>"
+      //         );
+      //       }
+      //     },
+      //   });
     </script>
   </body>
 </html>

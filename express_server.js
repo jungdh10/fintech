@@ -185,4 +185,9 @@ app.post("/list", auth, function (req, res) {
   });
 });
 
+app.post("/balance", function (err, res) {
+  var userId = req.decoded.userId;
+  //사용자 정보를 바탕으로 request 요청을 만들기 url https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num
+});
+
 app.listen(3000);
