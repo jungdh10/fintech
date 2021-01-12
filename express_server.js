@@ -185,12 +185,42 @@ app.post("/list", auth, function (req, res) {
   });
 });
 
-app.post("/balance", function (err, res) {
+app.post("/balance", auth, function (req, res) {
   var userId = req.decoded.userId;
+  var finusenum = req.body.fin_use_num;
   var countnum = Math.floor(Math.random() * 1000000000) + 1;
   var transId = "T991659570U" + countnum; //이용기관번호 본인것 입력
 
   //사용자 정보를 바탕으로 request 요청을 만들기 url https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num
+  connection.query("SELECT * FROM user WHERE id = ?", [userId], function (
+    error,
+    results
+  ) {
+    if (error) throw error;
+    else {
+      var option = {
+        method: "GET",
+        url: "https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num",
+        headers: {
+          Authorization: "Bearer " + results[0].accesstoken,
+        },
+        //accesstoken 입력
+        //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
+        qs: {
+          bank_tran_id: transId,
+          fintech_use_num: finusenum,
+          tran_dtime: "20210109160100",
+          //#자기 키로 시크릿 변경
+        },
+      };
+      request(option, function (err, response, body) {
+        var resResult = JSON.parse(body);
+        console.log(resResult);
+        //json 문서를 파싱하여 javascript 오브젝트로 변환
+        res.json(resResult);
+      });
+    }
+  });
 });
 
 app.listen(3000);

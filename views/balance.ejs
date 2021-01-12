@@ -282,9 +282,13 @@
         //req.body.fin_use_num 추가해서 보내기
         success: function (data) {
           console.log("해당 계좌의 잔액은 :", data.balance_amt);
-          $("#balanceAmount").text(data.balance_amt);
+          $("#balanceAmount").text(numberFormat(data.balance_amt) + "원");
         },
       });
+      function numberFormat(inputNumber) {
+        return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
       //   $.ajax({
       //     url: "http://localhost:3000/transactionlist",
       //     type: "POST",
