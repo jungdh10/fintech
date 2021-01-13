@@ -289,25 +289,25 @@
         return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
 
-      //   $.ajax({
-      //     url: "http://localhost:3000/transactionlist",
-      //     type: "POST",
-      //     headers: {
-      //       ourtoken: jwtToken,
-      //     },
-      //     data: {
-      //       fin_use_num: qs.fin_use_num,
-      //     },
-      //     success: function (data) {
-      //       console.log(data);
-      //       for (var i = 0; i < data.res_list.length; i++) {
-      //         var element = data.res_list[i];
-      //         $("#transactionList").append(
-      //           element.print_content + " | " + element.tran_amt + "<br>"
-      //         );
-      //       }
-      //     },
-      //   });
+         $.ajax({
+           url: "http://localhost:3000/transactionlist",
+           type: "POST",
+           headers: {
+             ourtoken: jwtToken,
+           },
+           data: {
+             fin_use_num: qs.fin_use_num,
+           },
+           success: function (data) {
+             console.log(data);
+             for (var i = 0; i < data.res_list.length; i++) {
+               var element = data.res_list[i];
+               $("#transactionList").append(
+                 element.print_content + " | " + element.tran_amt + "<br>"
+               );
+             }
+           },
+         });
     </script>
   </body>
 </html>
