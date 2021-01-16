@@ -236,14 +236,21 @@ app.post("/transactionlist", auth, function (req, res) {
     else {
       var option = {
         method: "GET",
-        url: "",
+        url: "https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num",
         headers: {
           Authorization: "Bearer " + results[0].accesstoken,
         },
         //accesstoken 입력
         //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
         qs: {
-          //#자기 키로 시크릿 변경
+          bank_tran_id: transId,
+          fintech_use_num: finusenum,
+          inquiry_type: "A",
+          inquiry_base: "D",
+          from_date: "20190101",
+          to_date: "20190101",
+          sort_order: "D",
+          tran_dtime: "20210109160100",
         },
       };
       request(option, function (err, response, body) {
