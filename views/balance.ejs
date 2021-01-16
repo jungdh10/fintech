@@ -303,7 +303,15 @@
              for (var i = 0; i < data.res_list.length; i++) {
                var element = data.res_list[i];
                $("#transactionList").append(
-                 element.print_content + " | " + element.tran_amt + "<br>"
+                "<tr><td>" +
+                (i + 1) +
+                "</td><td>" +
+                element.inout_type +
+                "</td><td>" +
+                element.print_content +
+                "</td><td>" +
+                element.tran_amt +
+                "</td></tr>"
                );
              }
            },
