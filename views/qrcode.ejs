@@ -211,6 +211,7 @@
           <div class="container">
             <div class="form-divider"></div>
             <!-- qr코드 랜더링 부분 -->
+            <div id="qrcode"></div>
           </div>
 
           <div class="form-divider"></div>
@@ -256,6 +257,8 @@
 
     <!-- qr코드 라이브러리 로드 -->
     <script src="js/qrcode.js"></script>
-    <script></script>
+    <script>
+      new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
+    </script>
   </body>
 </html>
