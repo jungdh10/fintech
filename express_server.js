@@ -49,6 +49,10 @@ app.get("/qrcode", function (req, res) {
   res.render("qrcode");
 });
 
+app.get("/qrreader", function (req, res) {
+  res.render("qrreader");
+});
+
 //app.get("/authText", auth, function (req, res) {
   //res.json("당신은 콘텐츠 접근에 성공했습니다.");
 //});
