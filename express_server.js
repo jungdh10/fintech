@@ -271,4 +271,6 @@ app.post("/transactionlist", auth, function (req, res) {
   });
 });
 
+app.post("/withdraw", function (req, res) {});
+
 app.listen(3000);
