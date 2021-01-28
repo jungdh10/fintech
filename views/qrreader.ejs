@@ -286,7 +286,6 @@
     <script src="js/instascan.min.js"></script>
     <script>
       var jwtToken = sessionStorage.getItem("ourToken");
-      console.log(qs, jwtToken);
       let scanner = new Instascan.Scanner({
         video: document.getElementById("preview"),
       });
@@ -333,6 +332,8 @@
           console.error(e);
         });
       function pay(useFintechNo) {
+        console.log("내가선택한 계좌의 핀테크 번호 :", useFintechNo);
+        console.log("내가 이체는 대상의 계좌 핀테크 번호 :", to_fin_use_num);
         $.ajax({
           url: "/withdraw",
           type: "POST",
