@@ -333,7 +333,7 @@
         });
       function pay(useFintechNo) {
         console.log("내가선택한 계좌의 핀테크 번호 :", useFintechNo);
-        console.log("내가 이체는 대상의 계좌 핀테크 번호 :", to_fin_use_num);
+        console.log("내가 이체하는 대상의 계좌 핀테크 번호 :", to_fin_use_num);
         $.ajax({
           url: "/withdraw",
           type: "POST",

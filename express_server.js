@@ -285,7 +285,7 @@ app.post("/withdraw", auth, function (req, res) {
   );
 
   var countnum = Math.floor(Math.random() * 1000000000) + 1;
-  var transId = "T991659570U" + countnum; //이용기과번호 본인것 입력
+  var transId = "T991659570U" + countnum; //이용기관번호 본인것 입력
 
   var sql = "SELECT * FROM user WHERE id = ?";
   connection.query(sql, [userId], function (err, results) {
@@ -314,10 +314,10 @@ app.post("/withdraw", auth, function (req, res) {
           req_client_name: "홍길동",
           req_client_fintech_use_num: fin_use_num,
           transfer_purpose: "ST",
-          req_client_num: "199165957057886910594151",
+          req_client_num: "123456789",
           recv_client_name: "정다혜",
           recv_client_bank_code: "097",
-          recv_client_account_num: "123456789",
+          recv_client_account_num: "4319504987",
         },
       };
       request(option, function (error, response, body) {
